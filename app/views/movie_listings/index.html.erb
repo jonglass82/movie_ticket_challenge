@@ -1,3 +1,5 @@
+<body>
+
 <h1>Now Playing</h1>
 
   <% @auditoriums.each do |auditorium| %>
@@ -6,8 +8,12 @@
 
       <% auditorium.movies.each do |movie| %>
         <ul>
-          <li><%= movie.title %> <b><%= movie.show_time %></b> - Remaining tickets: <%= auditorium.capacity %></li>
+          <li><%= movie.title %></li>
+          <li><a href="/new_purchase/<%= movie.id %>"><b><%= movie.show_time %></b></a></li>
+           <li>Remaining tickets: <%= auditorium.capacity %></li>
         </ul>
       <% end %>
 
   <% end %>
+
+</body>

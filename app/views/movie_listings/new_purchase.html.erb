@@ -1,0 +1,42 @@
+<body>
+
+  <div class="container">
+
+<h1>Purchase a ticket for: <%= @movie.title %> </h1>
+
+  <%= @errors.length %>
+
+
+    <form action="/new_purchase/create" method="post">
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input name="name" class="form-control" id="name" aria-describedby="name" placeholder="Name">
+        </div>
+
+         <div class="form-group">
+          <label for="name">Email</label>
+          <input name="email" class="form-control" id="email" aria-describedby="name" placeholder="ex: jon@example.com">
+        </div>
+
+         <div class="form-group">
+          <label for="name">Card Number</label>
+          <input name="cc_number" class="form-control" id="card_number" aria-describedby="name" placeholder="Card Number">
+        </div>
+
+         <div class="form-group">
+          <label for="name">Card Expiration</label>
+          <input name="cc_exp" class="form-control" id="name" aria-describedby="name" placeholder="Expiration Date">
+        </div>
+
+        <div class="form-group">
+         <input type="hidden" id="movie_id" name="movie_id" value="<%= @movie.id %>">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+</div>
+
+</body>

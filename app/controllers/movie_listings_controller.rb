@@ -5,7 +5,7 @@ class MovieListingsController < ApplicationController
   end
 
   def new_purchase
-
+    @movie = Movie.find_by(id: params[:id])
   end
 
 end
