@@ -1,0 +1,13 @@
+<h1>Now Playing</h1>
+
+  <% @auditoriums.each do |auditorium| %>
+
+    <h3> <%= auditorium.space_name %> </h3>
+
+      <% auditorium.movies.each do |movie| %>
+        <ul>
+          <li><%= movie.title %> <b><%= movie.show_time %></b> - Remaining tickets: <%= auditorium.capacity %></li>
+        </ul>
+      <% end %>
+
+  <% end %>
