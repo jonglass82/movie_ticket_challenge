@@ -1,0 +1,33 @@
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<h2>Current Auditoriums and movie listings:</h2> 
+
+<button>Create a new auditorium:</button>
+
+ <% @auditoriums.each do |auditorium| %>
+
+      <% auditorium.movies.each do |movie| %>
+        <ul>
+          <li><%= movie.title %></li>
+          <li><a href="/new_purchase/<%= movie.id %>"><b><%= movie.show_time %></b></a></li>
+           <li>Remaining tickets: <%= auditorium.capacity %></li>
+        </ul>
+      <% end %>
+
+  <% end %>
+
+
+<h2>Create a movie listing:</h2>
+<!-- create a new movie and associate with an auditorium -->
+
+<h2>View all ticket sales:</h2>
+
+<% @ticket_sales.each do |sale| %>
+  <ul>
+    <li><%= sale.customer_name %> | <%= sale.created_at %> | </li>
+  </ul>
+<% end %>
+
+</body>

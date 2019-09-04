@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   # end
 
   get "/" => "movie_listings#index"
-  get "/new_purchase/:id" => "movie_listings#new_purchase"
+  
+  get "/new_purchase/:id" => "purchases#new_purchase"
 
-  post "new_purchase/create" => "purchases#create"
+  post "/new_purchase/create" => "purchases#create"
+
+  get "/admin_dashboard" => "dashboards#index"
 
 end

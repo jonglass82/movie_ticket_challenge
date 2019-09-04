@@ -1,6 +1,6 @@
-<body>
-
 <h1>Now Playing</h1>
+
+<%= Date.today.strftime("%A")%> <%= Date.today.strftime("%B") %> <%= Date.today.day %>, <%= Date.today.year %>
 
   <% @auditoriums.each do |auditorium| %>
 
@@ -9,11 +9,14 @@
       <% auditorium.movies.each do |movie| %>
         <ul>
           <li><%= movie.title %></li>
-          <li><a href="/new_purchase/<%= movie.id %>"><b><%= movie.show_time %></b></a></li>
-           <li>Remaining tickets: <%= auditorium.capacity %></li>
+
+          <% if auditorium.capacity - movie.tickets.count == 0 %>
+            <b>SOLD OUT</b>
+          <% else %>
+            <li><a href="/new_purchase/<%= movie.id %>"><b><%= movie.show_time %></b></a></li>
+          <% end %>
+           <li>Remaining tickets: <%= auditorium.capacity - movie.tickets.count %></li>
         </ul>
       <% end %>
 
   <% end %>
-
-</body>

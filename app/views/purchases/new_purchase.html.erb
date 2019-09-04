@@ -1,0 +1,47 @@
+
+  <div class="container">
+
+<h1>Purchase a ticket for: <%= @movie.title %> </h1>
+
+       <% if @errors.length > 0 %>
+          <% @errors.each do |error| %>
+          <ul>
+            <li><%= error %></li>
+          </ul>
+          <% end %>
+        <% end %>
+
+    <form action="/new_purchase/create" method="post">
+
+        <div class="form-group">
+          <label for="customer_name">Name</label>
+          <input name="customer_name" class="form-control" id="customer_name" aria-describedby="name" placeholder="Name" value="<%= params[:customer_name]%>">
+        </div>
+
+         <div class="form-group">
+          <label for="customer_email">Email</label>
+          <input name="customer_email" class="form-control" id="customer_email" aria-describedby="customer_email" placeholder="jon@example.com"value="<%= params[:customer_email]%>">
+            <small id="email_help" class="form-text text-muted">ex: "jon@email.com"</small>
+        </div>
+
+         <div class="form-group">
+          <label for="cc_number">Card Number</label>
+          <input name="cc_number" class="form-control" id="cc_number" aria-describedby="cc_number" placeholder="Card Number" value="<%= params[:cc_number]%>">
+            <small id="cc_number_help" class="form-text text-muted">format: 1111-2222-3333-4444</small>
+        </div>
+
+         <div class="form-group">
+          <label for="cc_exp">Card Expiration</label>
+          <input name="cc_exp" class="form-control" id="cc_exp" aria-describedby="cc_exp" placeholder="mm/yyyy" value="<%= params[:cc_exp]%>">
+           <small id="cc_exp_help" class="form-text text-muted">mm/yyyy</small>
+        </div>
+
+        <div class="form-group">
+         <input type="hidden" id="movie_id" name="movie_id" value="<%= @movie.id %>">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+
+</div>
