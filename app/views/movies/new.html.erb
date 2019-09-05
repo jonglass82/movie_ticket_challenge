@@ -1,0 +1,34 @@
+<div class="container">
+
+  <h1>Create a new movie:</h1>
+
+         <% if @errors.length > 0 %>
+          <% @errors.each do |error| %>
+          <ul>
+            <li><%= error %></li>
+          </ul>
+          <% end %>
+        <% end %>
+
+   <form action="/movie/create" method="post">
+
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input name="title" class="form-control" id="title" aria-describedby="title" value="<%= params[:title]%>">
+        </div>
+
+         <div class="form-group">
+          <label for="show_time">Show Time:</label>
+          <input name="show_time" class="form-control" id="show_time" aria-describedby="show_time" value="<%= params[:show_time]%>">
+        </div>
+
+        <div class="form-group">
+          <label for="auditorium_id">Location:</label>
+          <input name="auditorium_id" class="form-control" id="auditorium_id" aria-describedby="auditorium_id" value="<%= params[:auditorium_id]%>">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create new movie</button>
+
+    </form>
+
+</div>

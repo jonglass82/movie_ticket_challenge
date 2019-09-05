@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
@@ -18,3 +19,11 @@
 //= require jquery.inputmask.extensions
 //= require jquery.inputmask.numeric.extensions
 //= require jquery.inputmask.date.extensions
+
+$(document).ready(function() {
+    
+    // console.log("hello", $("h1").html());
+    $("h1").click(function(){
+      $("input").hide()
+    });
+});

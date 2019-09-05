@@ -2,25 +2,27 @@
 
 <h1>Admin Dashboard</h1>
 
-<h2>Current Auditoriums and movie listings:</h2> 
 
-<button>Create a new auditorium:</button>
+<button><a href="/auditorium/new">Create a new auditorium</a></button><br>
+
+<button><a href="/movie/new">Create a new movie</a></button>
+
+
+<h2>Current Auditoriums and movie listings:</h2> 
 
  <% @auditoriums.each do |auditorium| %>
 
+ <h3> <%= auditorium.space_name %> <a href="/auditorium/edit/<%= auditorium.id %>">Edit</a></h3>
+
       <% auditorium.movies.each do |movie| %>
         <ul>
-          <li><%= movie.title %></li>
-          <li><a href="/new_purchase/<%= movie.id %>"><b><%= movie.show_time %></b></a></li>
-           <li>Remaining tickets: <%= auditorium.capacity %></li>
+          <li><%= movie.title %> | <b><%= movie.show_time %></b> | Remaining tickets: <%= auditorium.capacity %> |  <a href="/movie/edit/<%= movie.id %>">Edit</a></li>
         </ul>
+       
       <% end %>
 
   <% end %>
 
-
-<h2>Create a movie listing:</h2>
-<!-- create a new movie and associate with an auditorium -->
 
 <h2>View all ticket sales:</h2>
 

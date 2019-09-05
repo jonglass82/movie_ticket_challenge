@@ -1,0 +1,29 @@
+<div class="container">
+
+  <h1>Create a new auditorium:</h1>
+
+         <% if @errors.length > 0 %>
+          <% @errors.each do |error| %>
+          <ul>
+            <li><%= error %></li>
+          </ul>
+          <% end %>
+        <% end %>
+
+   <form action="/auditorium/create" method="post">
+
+        <div class="form-group">
+          <label for="space_name">Space Name:</label>
+          <input name="space_name" class="form-control" id="space_name" aria-describedby="space_name" value="<%= params[:space_name]%>">
+        </div>
+
+         <div class="form-group">
+          <label for="capacity">Capacity:</label>
+          <input name="capacity" class="form-control" id="capacity" aria-describedby="capacity" value="<%= params[:capacity]%>">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create new Auditorium</button>
+
+    </form>
+
+</div>
