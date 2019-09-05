@@ -1,3 +1,16 @@
+<h1>Thank you for your purchase!</h1>
+
+<h2>You will receive an email at <%= @purchase.customer_email %> with your ticket confirmation</h2>
+
+<h2>Your ticket has been purchased for:</h2>
+
+<h3><%= @movie.title %></h3>
+
+<h3>Showtime: <%= @movie.show_time %></h3>
+
+<h3>Auditorium: <%= @location %></h3>
+
 <h1>Enjoy the show!</h1>
 
-<h3>Your ticket has been purchased</h3>
+<a href="/">Back to movie listings</a>
+

@@ -18,11 +18,16 @@ class PurchasesController < ApplicationController
 
     if @purchase.save
 
+      @movie = Movie.find_by(id: params[:movie_id])
+      @location = @movie.auditorium.space_name
+
       @ticket = Ticket.create(
         movie_id: params[:movie_id]
       )
 
       @purchase.update(ticket_id: @ticket.id)
+
+      PurchaseConfirmationMailer.purchase_confirmation_email(@purchase).deliver_now
 
       render "purchase_confirmation.html.erb"
 
