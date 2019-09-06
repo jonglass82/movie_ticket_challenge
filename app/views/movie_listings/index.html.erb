@@ -1,24 +1,39 @@
-<h1>Now Playing</h1>
+<div class="container" id="main_content">
 
-<a href="/admin_dashboard">Admin dashboard</a><br>
+<div class="jumbotron">
+  <h1 class="display-4">Glassman Theaters</h1>
+  <p class="lead">Buy your tickets here!</p>
+  <hr class="my-4">
+  <p>Showtimes are posted daily. Please click the show time to purchase your ticket.</p>
+</div>
 
-<%= Date.today.strftime("%A")%> <%= Date.today.strftime("%B") %> <%= Date.today.day %>, <%= Date.today.year %>
+<a href="/admin_dashboard">Admin Dashboard</a>
+
+ <h1><b>Now Playing</b></h1>
+
+ <h2><%= Date.today.strftime("%A")%> <%= Date.today.strftime("%B") %> <%= Date.today.day %>, <%= Date.today.year %></h2>
 
   <% @auditoriums.each do |auditorium| %>
 
-    <h3> <%= auditorium.space_name %> </h3>
+    <div class="section_header"><h2> <%= auditorium.space_name %> </h2></div>
 
       <% auditorium.movies.each do |movie| %>
-        <ul>
-          <li><%= movie.title %></li>
 
-          <% if auditorium.capacity - movie.tickets.count == 0 %>
+        <ul>
+
+          <li><b><%= movie.title %></b> | 
+
+          <% if movie.available_tickets == 0 %>
             <b>SOLD OUT</b>
           <% else %>
-            <li><a href="/new_purchase/<%= movie.id %>"><b><%= movie.show_time %></b></a></li>
+            <a href="/new_purchase/<%= movie.id %>"><b><%= movie.show_time %></b></a> | Remaining tickets: <%= movie.available_tickets %></li>
           <% end %>
-           <li>Remaining tickets: <%= auditorium.capacity - movie.tickets.count %></li>
+           
+           
         </ul>
+
       <% end %>
 
   <% end %>
+
+</div>

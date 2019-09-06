@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_04_012215) do
+ActiveRecord::Schema.define(version: 2019_09_05_214154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_09_04_012215) do
     t.integer "auditorium_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
+    t.integer "available_tickets"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -42,7 +44,6 @@ ActiveRecord::Schema.define(version: 2019_09_04_012215) do
 
   create_table "tickets", force: :cascade do |t|
     t.integer "movie_id"
-    t.integer "max"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

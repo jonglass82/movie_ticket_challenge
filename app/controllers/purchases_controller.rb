@@ -26,6 +26,7 @@ class PurchasesController < ApplicationController
       )
 
       @purchase.update(ticket_id: @ticket.id)
+      @movie.decrement!(:available_tickets)
 
       PurchaseConfirmationMailer.purchase_confirmation_email(@purchase).deliver_now
 

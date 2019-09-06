@@ -1,6 +1,6 @@
 class ExpirationDateValidation < ActiveModel::Validator
   def validate(record)
-    unless record.cc_exp >= Date.today.strftime("%m/%Y")
+    unless Date.parse(record.cc_exp) > Date.today
       record.errors.add :cc_exp, "must be a valid date"
     end
   end

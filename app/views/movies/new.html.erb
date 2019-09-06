@@ -24,8 +24,12 @@
 
         <div class="form-group">
           <label for="auditorium_id">Location:</label>
-          <input name="auditorium_id" class="form-control" id="auditorium_id" aria-describedby="auditorium_id" value="<%= params[:auditorium_id]%>">
-        </div>
+
+          <select class="selectpicker" name="space_name" value="<%= params[:auditorium_id]%>">
+            <% @auditoriums.each do |auditorium| %>
+              <option name="space_name"><%= auditorium.space_name %></option>
+            <% end %>
+          </select>
 
         <button type="submit" class="btn btn-primary">Create new movie</button>
 
