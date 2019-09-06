@@ -21,9 +21,17 @@
 //= require jquery.inputmask.date.extensions
 
 $(document).ready(function() {
+
+$("#search_bar").keyup(function(){
+
+    var userInput = $(this).val().toLowerCase();
     
-    // console.log("hello", $("h1").html());
-    $("h1").click(function(){
-      $("input").hide()
+    $(".searchable").filter(function() {
+         
+      $(this).toggle($(this).text().toLowerCase().indexOf(userInput) > -1);
     });
+        
+    
+});    
+
 });

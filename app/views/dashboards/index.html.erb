@@ -38,9 +38,11 @@
 <div class="container">
     <h2>View all ticket sales:</h2>
 
+    Search: <input id="search_bar" type="text">  
+
     <% @ticket_sales.each do |sale| %>
       <ul>
-        <li><%= sale.customer_name %> | <%= Ticket.find_by_id(sale.ticket_id).movie.title %> | <%= sale.created_at %> | </li>
+        <li class="searchable"><%= sale.customer_name %> | <%= Ticket.find_by_id(sale.ticket_id).movie.title %> | <%= sale.created_at %> | </li>
       </ul>
     <% end %>
 </div>
