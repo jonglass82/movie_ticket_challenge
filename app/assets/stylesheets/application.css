@@ -21,6 +21,7 @@
  #main_content{
   padding: 5px;
   font-size: 16pt;
+  background-color: #d9d9d9;
  }
 
  #main_content ul{
@@ -28,20 +29,27 @@
  }
 
  .section_header{
-  background-color: #e8e8e8;
+  background-color: darkgrey;
+  color: white;
   padding: 7px;
-  border-radius: 10px;
+  border-radius: 7px;
  }
 
- nav{
-  background-color: black;
- }
-
- .navbar-brand{
+ nav a{
   color: white;
  }
 
+ .nav-link{
+  color: white;
+ }
+
+ nav a:hover{
+  color: #d9d9d9;
+ }
+
  .jumbotron{
+  background-color: red;
+  color: white;
   text-align: center;
   align-content: center;
  }
@@ -60,4 +68,16 @@
 
 .dashboard_buttons a{
   color: white;
+ }
+
+ .navbar-toggler{
+  color: red;
+  background-color: white;
+ }
+
+ .movie-listing{
+  padding: 20px;
+  background-color: white;
+  margin: .5%;
+  border-radius: 7px;
  }

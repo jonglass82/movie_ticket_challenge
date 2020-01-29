@@ -19,6 +19,12 @@
 
 <h1>Purchase your ticket for: <%= @movie.title %> </h1>
 
+<h2>Time: <%= @movie.show_time %></h2>
+
+<h2>Date:</h2>
+
+<h2>Location: <%= @auditorium %> 
+
        <% if @errors.length > 0 %>
           <% @errors.each do |error| %>
           <ul>

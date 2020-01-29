@@ -17,40 +17,19 @@
 
 <div class="container">
 
+
   <h1>Create a new movie:</h1>
 
-         <% if @errors.length > 0 %>
-          <% @errors.each do |error| %>
-          <ul>
-            <li><%= error %></li>
-          </ul>
-          <% end %>
-        <% end %>
+    <form action="/movie/search" method="get">
 
-   <form action="/movie/create" method="post">
+      <label for="search_title">Search for a movie:</label><input name="search_title" value="" type="text">
 
-        <div class="form-group">
-          <label for="title">Title:</label>
-          <input name="title" class="form-control" id="title" aria-describedby="title" value="<%= params[:title]%>">
-        </div>
-
-         <div class="form-group">
-          <label for="show_time">Show Time:</label>
-          <input name="show_time" class="form-control" id="show_time" aria-describedby="show_time" value="<%= params[:show_time]%>">
-        </div>
-
-        <div class="form-group">
-          <label for="auditorium_id">Location:</label>
-
-          <select class="selectpicker" name="space_name" value="<%= params[:auditorium_id]%>">
-            <% @auditoriums.each do |auditorium| %>
-              <option name="space_name"><%= auditorium.space_name %></option>
-            <% end %>
-          </select>
-
-        <button type="submit" class="btn btn-primary">Create new movie</button>
+      <button type="submit" class="btn btn-primary">Search</button>
 
     </form>
+
+    <%= @movies %>
+
 
 </div>
 

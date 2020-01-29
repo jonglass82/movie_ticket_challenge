@@ -3,6 +3,7 @@ class PurchasesController < ApplicationController
 
   def new_purchase
     @movie = Movie.find_by(id: params[:id])
+    @auditorium = @movie.auditorium.space_name
     @errors = []
   end
 

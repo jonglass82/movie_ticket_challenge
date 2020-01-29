@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
 
+  require 'net/http'
+
   def new
     @auditoriums = Auditorium.all
     @errors = []
@@ -47,6 +49,12 @@ class MoviesController < ApplicationController
       render "edit.html.erb"
     end
     
+  end
+
+  def search 
+    uri = URI("http://www.omdbapi.com/?t=#{params[:search_title]}&apikey=#{ENV['MOVIE_API_KEY']}")
+    @movies = results = Net::HTTP.get(uri)
+    render "new.html.erb"
   end
 
 end
