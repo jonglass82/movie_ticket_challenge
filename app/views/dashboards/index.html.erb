@@ -1,71 +1,30 @@
-  <nav class="navbar navbar-expand-lg bg-dark">
-  <a class="navbar-brand" href="/">Glassman Theaters</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin_dashboard">Admin Dashboard</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
 <div class="container" id="dashboard">
 
 <h1>Admin Dashboard</h1>
 
 <br>
 
-<div class="row">
+  <div class="row">
 
-  <div class="col-sm-6"><button class="dashboard_buttons"><a href="/auditorium/new">Create a new auditorium</a></button><br></div>
+    <div class="col-sm-6"><button class="dashboard_buttons"><a href="/auditorium/new">Create a new auditorium</a></button><br></div>
 
-  <div class="col-sm-6"><button class="dashboard_buttons"><a href="/movie/new">Create a new movie</a></button></div>
+    <div class="col-sm-6"><button class="dashboard_buttons"><a href="/movie/new">Create a new movie</a></button></div>
 
-</div>
+  </div>
 
-<br>
+  <br>
 
-<div class="container">
-  <h2>Current Auditoriums and movie listings:</h2> 
-
-  <% @auditoriums.each do |auditorium| %>
-
- <h3> <%= auditorium.space_name %> <a href="/auditorium/edit/<%= auditorium.id %>">Edit</a></h3>
-
-      <% auditorium.movies.each do |movie| %>
-      <% if movie.active %>
-        <ul>
-          <li><%= movie.title %> | <b><%= movie.show_time %></b> | Remaining tickets: <%= movie.available_tickets %> |  <a href="/movie/edit/<%= movie.id %>">Edit</a></li>
-        </ul>
-        <% end %>
-       
-      <% end %>
-
-  <% end %>
-</div>
-<br>
-<br>
+  <div class="container">
+    
+  </div>
+  <br>
+  <br>
 
 <div class="container">
     <h2>View all ticket sales:</h2>
 
     Search: <input id="search_bar" type="text">  
 
-    <% @ticket_sales.each do |sale| %>
-      <ul>
-        <li class="searchable"><%= sale.customer_name %> | <%= Ticket.find_by_id(sale.ticket_id).movie.title %> | <%= sale.created_at %> | </li>
-      </ul>
-    <% end %>
 </div>
 
 </div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

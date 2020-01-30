@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_214154) do
+ActiveRecord::Schema.define(version: 2020_01_30_190420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,18 @@ ActiveRecord::Schema.define(version: 2019_09_05_214154) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
-    t.string "show_time"
-    t.integer "auditorium_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
-    t.integer "available_tickets"
+    t.string "length"
+    t.string "image_url"
+    t.string "rating"
+    t.string "run_time"
+    t.string "genre"
+    t.string "director"
+    t.string "actors"
+    t.string "plot"
+    t.string "production"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -42,10 +48,19 @@ ActiveRecord::Schema.define(version: 2019_09_05_214154) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tickets", force: :cascade do |t|
+  create_table "showtimes", force: :cascade do |t|
     t.integer "movie_id"
+    t.integer "auditorium_id"
+    t.string "time"
+    t.string "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "showtime_id"
   end
 
 end
