@@ -3,14 +3,45 @@
 
   <h1>Create a new movie:</h1>
 
+    <!--   search for a movie vie the OMDB api -->
+
     <form action="/movie/search" method="get">
 
-      <label for="search_title">Search for a movie:</label><input name="search_title" value="" type="text">
+      <label for="search">Search for a movie:</label><input name="search" value="" type="text">
 
       <button type="submit" class="btn btn-primary">Search</button>
 
     </form>
 
-    <%= @movies %>
+    <!-- Select A movie returned in the OMDB response -->
+
+        <% if @movies %>
+
+            <% @movies["Search"].each do |movie| %>
+                
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+
+                      <div class="col-md-4">
+                        <img src=<%= movie["Poster"]%> class="card-img" alt="movie_image">
+                      </div>
+                      
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= movie["Title"] %></h5>
+                          <p class="card-text"><%= movie["Year"] %></p>
+                          <p class="card-text"><a href="/movie/preview/<%= movie['imdbID']%>">More info</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+              <% end %>
+
+        <% else %>
+
+          <h3>No results found</h3>
+
+        <% end %>
 
 </div>

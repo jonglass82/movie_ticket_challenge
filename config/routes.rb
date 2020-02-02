@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get "/movie/edit/:id" => "movies#edit"
   get "/movie/update/:id" => "movies#update"
   get "/movie/search" => "movies#search"
+  get "/movie/preview/:id" => "movies#preview"
   post "/movie/create" => "movies#create"
   patch "/movie/edit/:id" => "movies#update"
 

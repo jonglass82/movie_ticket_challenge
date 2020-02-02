@@ -9,15 +9,21 @@ class MoviesController < ApplicationController
 
   def create
 
-      @auditoriums = Auditorium.all
-      @selected_auditorium = Auditorium.where(space_name:params[:space_name]).first.id
-      @selected_auditorium_capacity = Auditorium.where(space_name:params[:space_name]).first.capacity
+    url = "http://www.omdbapi.com/?i=#{params[:imdbID]}&apikey=#{ENV['MOVIE_API_KEY']}"
+    uri = URI(url)
+    data = Net::HTTP.get(uri)
+    @selected_movie = JSON.parse(data)
 
       @movie = Movie.new(
-        title: params[:title],
-        show_time: params[:show_time],
-        auditorium_id: @selected_auditorium,
-        available_tickets: @selected_auditorium_capacity
+        title: @selected_movie["Title"],
+        image_url: @selected_movie["Poster"],
+        rating: @selected_movie["Rated"],
+        run_time: @selected_movie["Runtime"],
+        genre: @selected_movie["Genre"],
+        director: @selected_movie["Director"],
+        actors: @selected_movie["Actors"],
+        plot: @selected_movie["Plot"],
+        production: @selected_movie["Production"]
       )
 
     if @movie.save
@@ -52,9 +58,19 @@ class MoviesController < ApplicationController
   end
 
   def search 
-    uri = URI("http://www.omdbapi.com/?t=#{params[:search_title]}&apikey=#{ENV['MOVIE_API_KEY']}")
-    @movies = results = Net::HTTP.get(uri)
+    url = "http://www.omdbapi.com/?s=#{params[:search]}&apikey=#{ENV['MOVIE_API_KEY']}"
+    uri = URI(url)
+    data = Net::HTTP.get(uri)
+    @movies = JSON.parse(data)
     render "new.html.erb"
+  end
+
+  def preview
+    url = "http://www.omdbapi.com/?i=#{params[:id]}&apikey=#{ENV['MOVIE_API_KEY']}"
+    uri = URI(url)
+    data = Net::HTTP.get(uri)
+    @selected_movie = JSON.parse(data)
+    render "preview.html.erb"
   end
 
 end

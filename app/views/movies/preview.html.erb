@@ -1,0 +1,55 @@
+<h1>Here is your movie:</h1>
+
+       <% if @errors %>
+          <% @errors.each do |error| %>
+          <ul>
+            <li><%= error %></li>
+          </ul>
+          <% end %>
+        <% end %>
+
+
+       <form action="/movie/create" method="post">
+
+        <input name="imdbID" value=<%= @selected_movie["imdbID"] %> type="hidden">
+
+             <div class="card mb-3" style="max-width: 540px;">
+                  <div class="row no-gutters">
+
+                      <div class="col-md-4">
+                        <img src=<%= @selected_movie["Poster"]%> class="card-img" alt="movie_image">
+                      </div>
+
+                      <div class="col-md-8">
+                        <div class="card-body">
+
+                          <h5 class="card-title">Title: <%= @selected_movie["Title"] %></h5>
+                         
+                          <p class="card-text"><b>Year:</b> <%= @selected_movie["Year"] %></p>
+                                           
+                          <p class="card-text"><b>Rating:</b> <%= @selected_movie["Rated"] %></p>
+                       
+                          <p class="card-text"><b>Run Time:</b> <%= @selected_movie["Runtime"] %></p>
+                        
+                          <p class="card-text"><b>Genre:</b> <%= @selected_movie["Genre"] %></p>
+                         
+                          <p class="card-text"><b>Director:</b> <%= @selected_movie["Director"] %></p>
+                       
+                          <p class="card-text"><b>Actors:</b> <%= @selected_movie["Actors"] %></p>
+                        
+                          <p class="card-text"><b>Plot:</b> <%= @selected_movie["Plot"] %></p>
+                        
+                          <p class="card-text"><b>Production:</b> <%= @selected_movie["Production"] %></p>
+                        
+                        </div>
+                      </div>
+
+                  </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Movie</button>
+
+      </form>
+
+
+
