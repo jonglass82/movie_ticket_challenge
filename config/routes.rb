@@ -37,4 +37,9 @@ Rails.application.routes.draw do
   post "/movie/create" => "movies#create"
   patch "/movie/edit/:id" => "movies#update"
 
+
+  #Showtime routes
+  get "/showtime/new" => "showtimes#new"
+  post "/showtime/create" => "showtimes#create"
+
 end

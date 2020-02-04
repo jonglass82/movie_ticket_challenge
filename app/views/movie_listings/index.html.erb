@@ -14,5 +14,40 @@
      <h2><%= Date.today.strftime("%A")%> <%= Date.today.strftime("%B") %> <%= Date.today.day %>, <%= Date.today.year %></h2>
     </div>
 
-</div>
+      <div id="movie-listings" class="container">
+              <% if @movies %>
 
+                <% @movies.each do |movie| %>
+                    
+                    <div class="card mb-3" style="width: 100%;">
+                        <div class="row no-gutters">
+
+                          <div class="col-md-4">
+                            <img src=<%= movie[:image_url]%> class="card-img" alt="movie_image">
+                          </div>
+                          
+                          <div class="col-md-8">
+                            <div class="card-body">
+                              <h5 class="card-title"><%= movie[:title] %></h5>
+                              <p class="card-text"><%= movie[:year] %></p>
+                              <p class="card-text"><%= movie[:rating] %></p>
+                              <p class="card-text"><%= movie[:run_time] %></p>
+                              <p class="card-text"><%= movie[:genre] %></p>
+                              <p class="card-text"><%= movie[:actors] %></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                  <% end %>
+
+              <% else %>
+
+                <h3>No results found</h3>
+
+              <% end %>
+      </div>
+
+    </div>
+
+</div>

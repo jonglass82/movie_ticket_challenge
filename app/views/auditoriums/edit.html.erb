@@ -2,14 +2,6 @@
 
 <h1>Update your auditorium here</h1>
 
-         <% if @errors.length > 0 %>
-          <% @errors.each do |error| %>
-          <ul>
-            <li><%= error %></li>
-          </ul>
-          <% end %>
-        <% end %>
-
    <form action="/auditorium/update/<%= @auditorium.id %>" method="patch">
 
         <div class="form-group">

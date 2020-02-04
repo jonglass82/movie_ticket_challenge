@@ -1,14 +1,5 @@
 <h1>Here is your movie:</h1>
 
-       <% if @errors %>
-          <% @errors.each do |error| %>
-          <ul>
-            <li><%= error %></li>
-          </ul>
-          <% end %>
-        <% end %>
-
-
        <form action="/movie/create" method="post">
 
         <input name="imdbID" value=<%= @selected_movie["imdbID"] %> type="hidden">

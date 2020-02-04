@@ -8,14 +8,6 @@
 
     <h2>Location: <%= @auditorium %> 
 
-       <% if @errors.length > 0 %>
-          <% @errors.each do |error| %>
-          <ul>
-            <li><%= error %></li>
-          </ul>
-          <% end %>
-        <% end %>
-
     <form action="/new_purchase/create" method="post">
 
         <div class="form-group">
