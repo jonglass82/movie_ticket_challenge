@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   #home page movie listings routes
 
   get "/" => "movie_listings#index"
-  
-  get "/new_purchase/:id" => "purchases#new_purchase"
+  get "movies/:id" => "movie_listings#show"
 
+  # purchase routes
+
+  get "/new_purchase/:id" => "purchases#new_purchase"
   post "/new_purchase/create" => "purchases#create"
 
   #admin dashboard routes
@@ -37,9 +39,12 @@ Rails.application.routes.draw do
   post "/movie/create" => "movies#create"
   patch "/movie/edit/:id" => "movies#update"
 
-
   #Showtime routes
+  
   get "/showtime/new" => "showtimes#new"
+  get "/showtime/edit/:id" => "showtimes#edit"
+  get "/showtime/update/:id" => "showtimes#update"
   post "/showtime/create" => "showtimes#create"
+  patch "/showtime/update/:id" => "showtimes#update"
 
 end

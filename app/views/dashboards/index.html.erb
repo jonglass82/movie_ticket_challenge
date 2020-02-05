@@ -13,11 +13,32 @@
     <div class="col-sm-4"><button class="dashboard_buttons"><a href="/showtime/new">Create a showtime</a></button></div>
 
   </div>
-
   <br>
 
+
   <div class="container">
-    
+
+      <h3>My Auditoriums:</h3>
+        <ul>
+          <% @auditoriums.each do |auditorium| %>
+          <li><%= auditorium.space_name %> | Capacity: <%= auditorium.capacity %> | <a href="/auditorium/edit/<%= auditorium.id %>">Edit</a></li>
+          <% end %>
+        </ul>
+
+      <h3>My Movies:</h3>
+        <ul>
+          <% @movies.each do |movie| %>
+          <li><%= movie.title %> | <a href="/movie/edit/<%= movie.id %>">Update</a></li>
+          <% end %>
+        </ul>
+
+      <h3>My Showtimes:</h3>
+        <ul>
+          <% @showtimes.each do |showtime| %>
+          <li><%= showtime.movie.title %> | <%= showtime.time %> | <a href="/showtime/edit/<%= showtime.id %>">Edit</a></li>
+          <% end %>
+        </ul>
+
   </div>
   <br>
   <br>

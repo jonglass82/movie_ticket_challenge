@@ -42,16 +42,12 @@ class MoviesController < ApplicationController
   def update
 
     @movie = Movie.find_by_id(params["id"])
-    @movie.title = params["title"] || @movie.title
-    @movie.show_time = params["show_time"] || @movie.show_time
-    @movie.auditorium = params["auditorium_id"] || @movie.auditorium
-    @movie.available_tickets = params["available_tickets"] || @movie.available_tickets
     @movie.active = params["active"] || @movie.active
     
     if @movie.save
       redirect_to "/admin_dashboard"
     else
-      @errors = @auditorium.errors.full_messages
+      @errors = @movie.errors.full_messages
       render "edit.html.erb"
     end
     

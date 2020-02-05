@@ -1,53 +1,53 @@
 <div id="main_content">
 
-    <div class="jumbotron" style="background-color: black;">
-      <h1 class="display-4">Glassman Theaters</h1>
-      <p class="lead">Buy your tickets here</p>
-      <hr class="my-4">
-      <p>Showtimes are posted daily. Please click the show time to purchase your ticket.</p>
-    </div>
+            <div class="jumbotron" style="background-color: black;">
+              <h1 class="display-4">Movie Theater</h1>
+              <p class="lead">Buy your tickets here</p>
+              <hr class="my-4">
+              <p>Showtimes are posted daily. Please click the show time to purchase your ticket.</p>
+            </div>
 
-    <div class="container">
-
-     <h1><b>Now Playing</b></h1>
-
-     <h2><%= Date.today.strftime("%A")%> <%= Date.today.strftime("%B") %> <%= Date.today.day %>, <%= Date.today.year %></h2>
-    </div>
+            <div class="container">
+                  <h1><b>Now Playing</b></h1>
+                 <h2><%= Date.today.strftime("%A")%> <%= Date.today.strftime("%B") %> <%= Date.today.day %>, <%= Date.today.year %></h2>
+            </div>
 
       <div id="movie-listings" class="container">
-              <% if @movies %>
+                  <% if @movies %>
+                      <% @movies.each do |movie| %>
+                         <div class="card mb-3" style="width: 100%;">
+                            <div class="row no-gutters">
 
-                <% @movies.each do |movie| %>
-                    
-                    <div class="card mb-3" style="width: 100%;">
-                        <div class="row no-gutters">
+                              <div class="col-sm-4">
+                                <img src=<%= movie[:image_url]%> class="card-img" alt="movie_image">
+                              </div>
 
-                          <div class="col-md-4">
-                            <img src=<%= movie[:image_url]%> class="card-img" alt="movie_image">
-                          </div>
-                          
-                          <div class="col-md-8">
-                            <div class="card-body">
-                              <h5 class="card-title"><%= movie[:title] %></h5>
-                              <p class="card-text"><%= movie[:year] %></p>
-                              <p class="card-text"><%= movie[:rating] %></p>
-                              <p class="card-text"><%= movie[:run_time] %></p>
-                              <p class="card-text"><%= movie[:genre] %></p>
-                              <p class="card-text"><%= movie[:actors] %></p>
-                            </div>
+                              <div class="col-sm-8">
+                                <div class="card-body">
+                                  <h5 class="card-title"><a href="/movies/<%= movie.id %>"><%= movie[:title] %></a></h5>
+                                
+                                  <p class="card-text"><%= movie[:rating] %></p>
+                                  <p class="card-text"><%= movie[:run_time] %></p>
+                                  <p class="card-text"><%= movie[:genre] %></p>
+                                  <p class="card-text"><%= movie[:actors] %></p>
+
+                                  <div id="showtimes">                        
+                                       <% movie.showtimes.each do |showtime| %>
+                                           <button><a href="/new_purchase/<%= showtime.id %>"><%= showtime.time %></a></button>
+                                        <% end %>
+                                 </div>
+
+                              </div>
+                           </div>
                           </div>
                         </div>
-                      </div>
 
-                  <% end %>
+                    <% end %>
 
-              <% else %>
+                <% else %>
+                  <h3>No results found</h3>
+                <% end %>
 
-                <h3>No results found</h3>
-
-              <% end %>
-      </div>
-
-    </div>
-
+          </div>
 </div>
+

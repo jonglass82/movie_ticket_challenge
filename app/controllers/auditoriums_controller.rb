@@ -22,7 +22,6 @@ class AuditoriumsController < ApplicationController
 
   def edit
     @auditorium = Auditorium.find_by_id(params["id"])
-    @errors = []
   end
 
   def update

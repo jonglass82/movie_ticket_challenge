@@ -1,0 +1,68 @@
+<div class="container">
+
+<h1>Edit your showtime</h1>
+
+<%= @showtime.movie.title %>
+<%= @showtime.time %>
+
+
+      <form action="/showtime/update/<%= @showtime.id %>" method="patch">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="movie_id">Movie:</label>
+                </div>
+
+              <select name="movie_id" class="custom-select" id="movie_id">
+
+                <option name="movie_id" value="<%= @showtime.movie_id %>" selected><%= @showtime.movie.title %></option>
+
+                      <%= @movies.each do |movie| %>
+
+                          <option name="movie_id" value=<%= movie.id %>><%= movie.title %></option>
+
+                      <% end %>
+
+              </select>
+
+            </div>
+
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Auditorium:</label>
+                </div>
+
+                <select name="auditorium_id" class="custom-select" id="inputGroupSelect01">
+
+                  <option name="auditorium_id" value="<%= @showtime.auditorium_id %>" selected><%= @showtime.auditorium.space_name %></option>
+
+                       <%= @auditoriums.each do |auditorium| %>
+
+                              <option name="auditorium_id" value=<%= auditorium.id %>><%= auditorium.space_name %></option>
+
+                        <% end %>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+              <label for="time">Time:</label>
+              <input name="time" class="form-control" id="time" aria-describedby="time" value="<%= @showtime.time %>">
+            </div>
+
+            <div class="form-group">
+              <label for="date">Date:</label>
+              <input name="date" class="form-control" id="date" aria-describedby="date" value="<%= @showtime.date %>">
+            </div>
+
+            <div class="form-group">
+              <label for="available_tickets">Available Tickets:</label>
+              <input name="available_tickets" class="form-control" id="available_tickets" aria-describedby="auditorium" value="<%= @showtime.available_tickets %>">
+            </div>
+
+        <button type="submit" class="btn btn-primary">Update Showtime</button>
+
+      </form>
+</div>
