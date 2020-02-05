@@ -2,6 +2,7 @@ class MovieListingsController < ApplicationController
 
   def index
     @movies = Movie.all
+    @showtimes = Showtime.order(:time)
   end
 
   def show

@@ -37,7 +37,6 @@ class ShowtimesController < ApplicationController
   end
 
   def update
-    p "hello?"
 
     @showtime = Showtime.find_by_id(params[:id])
 
@@ -57,6 +56,5 @@ class ShowtimesController < ApplicationController
     end
     
   end
-
 
 end

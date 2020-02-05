@@ -4,11 +4,11 @@
 
 <h2>Your ticket has been purchased for:</h2>
 
-<h3><%= @movie.title %></h3>
+<h3><%= @showtime.movie.title %></h3>
 
-<h3>Showtime: <%= @movie.show_time %></h3>
+<h3>Showtime: <%= @showtime.time %></h3>
 
-<h3>Auditorium: <%= @location %></h3>
+<h3>Auditorium: <%= @showtime.auditorium.space_name %></h3>
 
 <h1>Enjoy the show!</h1>
 
