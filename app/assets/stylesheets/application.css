@@ -2,6 +2,10 @@
   font-family: 'ABeeZee', sans-serif;
  }
 
+ button{
+  color: inherit;
+ }
+
  #main_content{
   padding: 5px;
   font-size: 16pt;
@@ -54,12 +58,19 @@
   color: white;
  }
 
- .navbar-toggler{
-  color: red;
+ .navbar-toggler-icon{
   background-color: white;
  }
 
  #showtimes{
   display: inline-block;
  }
+
+ #movie-listing{
+  border-style: solid;
+  border-width: 1pt;
+  border-color: black;
+  padding: 10px;
+ }
+
 

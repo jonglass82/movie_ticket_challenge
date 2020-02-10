@@ -6,6 +6,7 @@ class PurchasesController < ApplicationController
   end
 
   def create
+    @showtime = Showtime.find_by(id: params[:showtime_id])
 
     @purchase = Purchase.new(
       ticket_id: "",
@@ -16,7 +17,6 @@ class PurchasesController < ApplicationController
       )
 
     if @purchase.save
-      @showtime = Showtime.find_by(id: params[:showtime_id])
       @ticket = Ticket.create(showtime_id: params[:showtime_id])
 
       @purchase.update(ticket_id: @ticket.id)

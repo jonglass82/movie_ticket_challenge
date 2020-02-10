@@ -15,7 +15,7 @@
       <div id="movie-listings" class="container">
                   <% if @movies %>
                       <% @movies.each do |movie| %>
-                         <div class="card mb-3" style="width: 100%;">
+                         <div id="movie-listing" class="card mb-3" style="max-height:auto;">
                             <div class="row no-gutters">
 
                               <div class="col-sm-4">
@@ -33,8 +33,12 @@
 
                                   <div id="showtimes">                        
                                        <% movie.showtimes.sort_by{|s|s.time}.each do |showtime| %>
-                                           <button><a href="/new_purchase/<%= showtime.id %>"><%= showtime.time %></a></button>
-                                        <% end %>
+                                            <% if showtime.available_tickets > 0 %>
+                                               <button type="button" class="btn btn-secondary"><a href="/new_purchase/<%= showtime.id %>" style="color: white;"><%= showtime.time %></a></button>
+                                            <% else %>
+                                               <button type="button" class="btn btn-secondary" disabled>SOLD OUT</button>
+                                            <% end %> 
+                                       <% end %>
                                  </div>
 
                               </div>
