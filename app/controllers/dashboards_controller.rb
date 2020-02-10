@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
     @movies = Movie.all
     @showtimes = Showtime.all
     @auditoriums = Auditorium.all
-    @ticket_sales = Purchase.all
+    @purchases = Purchase.order(id: :desc)
   end
 
 end

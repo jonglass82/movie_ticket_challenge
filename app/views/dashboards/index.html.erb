@@ -48,6 +48,14 @@
 
     Search: <input id="search_bar" type="text">  
 
+    <div>
+      <ul>
+        <% @purchases.each do |purchase| %>
+          <li class="searchable"><%= purchase.customer_name %> | <%= purchase.ticket.showtime.time %> | <%= purchase.ticket.showtime.movie.title %> | <%= purchase.created_at %></li>
+        <% end %>
+      </ul>
+    </div>
+
 </div>
 
 </div>
